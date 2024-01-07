@@ -1,8 +1,8 @@
-require("dotenv").config();
+const { serverPort } = require("./secret");
+const connectDB = require("./config/db");
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const PORT = process.env.PORT || 5000;
 
 const defaultRouter = require("./routes/default.routes");
 const userRouter = require("./routes/users.routes");
@@ -16,6 +16,7 @@ app.use("/", defaultRouter);
 app.use("/users", userRouter);
 app.use(notFoundRouter);
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+app.listen(serverPort, async () => {
+  console.log(`Server running at http://localhost:${serverPort}`);
+  await connectDB();
 });

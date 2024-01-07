@@ -1,3 +1,3 @@
 exports.default_ = (req, res) => {
-  res.send("Server running successfully...");
+  res.send(`<h1>Server Running</h1>`);
 }
