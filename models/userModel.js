@@ -36,11 +36,11 @@ const userSchema = new mongoose.Schema({
   phoneNumber: {
     type: String,
     trim: true,
+    unique: true,
     match: /^[0-9]{11}$/, // 11-digit phone number format
   },
   profilePhoto: {
-    type: String,
-    required: true,
+    type: String
   },
   accountType: {
     type: String,

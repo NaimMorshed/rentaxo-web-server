@@ -6,14 +6,16 @@ const {
   getUserByPhone,
   postNewUser,
   deleteUser,
+  getUserById,
   // updateUser
 } = require("../controllers/users.controller");
 
 router.get("/", getAllUser);
 router.get("/phone/:phone", getUserByPhone);
 router.get("/email/:email", getUserByEmail);
+router.get("/id/:id", getUserById);
 router.post("/", postNewUser);
-router.delete("/", deleteUser);
+router.delete("/:phoneNumber", deleteUser);
 // router.update("/", updateUser);
 
 module.exports = router;
