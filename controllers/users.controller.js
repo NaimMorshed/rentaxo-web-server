@@ -116,10 +116,11 @@ exports.deleteUser = async (req, res) => {
 
 exports.updateUser = async (req, res) => {
   try {
-    const user = await Users.findOne({ _id: req.params._id });
+    const { id } = req.params;
+    const user = await Users.findById({ _id: id });
     if (user) {
       await Users.updateOne(
-        { _id: req.params._id },
+        { _id: req.body._id },
         {
           $set: {
             fullName: req.body.fullName,
@@ -132,6 +133,7 @@ exports.updateUser = async (req, res) => {
             phoneNumber: req.body.phoneNumber,
             profilePhoto: req.body.profilePhoto,
             accountType: req.body.accountType,
+            registrationDate: req.body.registrationDate,
           },
         }
       );

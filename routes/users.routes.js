@@ -7,7 +7,7 @@ const {
   postNewUser,
   deleteUser,
   getUserById,
-  // updateUser
+  updateUser
 } = require("../controllers/users.controller");
 
 router.get("/", getAllUser);
@@ -16,6 +16,6 @@ router.get("/email/:email", getUserByEmail);
 router.get("/id/:id", getUserById);
 router.post("/", postNewUser);
 router.delete("/:phoneNumber", deleteUser);
-// router.update("/", updateUser);
+router.put("/:id", updateUser);
 
 module.exports = router;
