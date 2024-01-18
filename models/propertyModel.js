@@ -1,6 +1,6 @@
-import { Schema, model } from "mongoose";
+const mongoose = require("mongoose");
 
-const propertySchema = new Schema({
+const propertySchema = new mongoose.Schema({
   landownerId: {
     type: String,
     required: true,
@@ -51,6 +51,6 @@ const propertySchema = new Schema({
   },
 });
 
-const Property = model("property", propertySchema);
+const Property = mongoose.model("property", propertySchema);
 
-export default Property;
+module.exports = Property;

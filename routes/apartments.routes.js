@@ -1,17 +1,17 @@
-import { Router } from "express";
-const router = Router();
-import {
+const express = require("express");
+const router = express.Router();
+const {
   getApartments,
-  getApartmentsById,
+  getApartmentById,
   postApartment,
   deleteApartment,
   updateApartment
-} from "../controllers/apartments.controller";
+} = require("../controllers/apartments.controller");
 
 router.get("/", getApartments);
-router.get("/:id", getApartmentsById);
+router.get("/:id", getApartmentById);
 router.post("/", postApartment);
 router.delete("/:id", deleteApartment);
 router.put("/:id", updateApartment);
 
-export default router;
+module.exports = router;

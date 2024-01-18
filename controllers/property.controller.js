@@ -1,6 +1,6 @@
-import Property from "../models/propertyModel";
+const Property = require("../models/propertyModel");
 
-export async function getProperty(req, res) {
+exports.getProperty = async(req, res) => {
   try {
     const property = await Property.find({});
     res.status(200).send(property);
@@ -11,7 +11,7 @@ export async function getProperty(req, res) {
   }
 }
 
-export async function getPropertyById(req, res) {
+exports.getPropertyById = async(req, res) => {
   try {
     const { id } = req.params;
     const property = await Property.findById({ _id: id });
@@ -25,7 +25,7 @@ export async function getPropertyById(req, res) {
   
 }
 
-export async function postProperty(req, res) {
+exports.postProperty = async(req, res) => {
   // const exist = await Apartments.findOne({ email });
 
   // if (exist) {
@@ -59,7 +59,7 @@ export async function postProperty(req, res) {
   }
 }
 
-export async function deleteProperty(req, res) {
+exports.deleteProperty = async(req, res) => {
   try {
     const property = await Property.findOne({ _id: req.params.id });
     if (property) {
@@ -77,7 +77,7 @@ export async function deleteProperty(req, res) {
   }
 }
 
-export async function updateProperty(req, res) {
+exports.updateProperty = async(req, res) => {
   try {
     const { id } = req.params;
     const property = await Property.findById({ _id: id });

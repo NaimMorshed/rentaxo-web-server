@@ -6,7 +6,8 @@ const cors = require("cors");
 
 const defaultRouter = require("./routes/default.routes");
 const userRouter = require("./routes/users.routes");
-const apartmentRouter = require("./routes/apartments.routes").default;
+const apartmentRouter = require("./routes/apartments.routes");
+const propertyRouter = require("./routes/property.routes");
 const documentsRoutes = require("./routes/document.routes");
 const notFoundRouter = require("./routes/notFound.routes");
 
@@ -17,10 +18,12 @@ app.use(express.json());
 app.use("/", defaultRouter);
 app.use("/users", userRouter);
 app.use("/apartments", apartmentRouter);
+app.use("/property", propertyRouter);
 app.use("/documents", documentsRoutes);
 app.use(notFoundRouter);
 
-app.listen(serverPort, async () => {
-  console.log(`Server running at http://localhost:${serverPort}`);
-  await connectDB();
+connectDB().then(() => {
+  app.listen(serverPort, () => {
+    console.log(`Server running at http://localhost:${serverPort}`);
+  });
 });

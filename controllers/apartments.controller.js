@@ -1,6 +1,6 @@
-import Apartments from "../models/apartmentModel";
+const Apartments = require("../models/apartmentModel");
 
-export async function getApartments(req, res) {
+exports.getApartments = async (req, res) => {
   try {
     const apartments = await Apartments.find({});
     res.status(200).send(apartments);
@@ -11,21 +11,21 @@ export async function getApartments(req, res) {
   }
 }
 
-export async function getApartmentById(req, res) {
+exports.getApartmentById = async (req, res) => {
   try {
     const { id } = req.params;
     const apartment = await Apartments.findById({ _id: id });
     if (apartment) 
-      res.status(200).send(apartment);
+      return res.status(200).send(apartment);
     else 
       res.status(404).send({ message: "Apartment not found!" });
   } catch (error) {
-    res.status(500).send({ message: error.message });
+    return res.status(500).send({ message: error.message });
   }
   
 }
 
-export async function postApartment(req, res) {
+exports.postApartment = async (req, res) => {
   // const exist = await Apartments.findOne({ email });
 
   // if (exist) {
@@ -68,7 +68,7 @@ export async function postApartment(req, res) {
   }
 }
 
-export async function deleteApartment(req, res) {
+exports.deleteApartment = async (req, res) => {
   try {
     const apartment = await Apartments.findOne({ _id: req.params.id });
     if (apartment) {
@@ -86,7 +86,7 @@ export async function deleteApartment(req, res) {
   }
 }
 
-export async function updateApartment(req, res) {
+exports.updateApartment = async (req, res) => {
   try {
     const { id } = req.params;
     const apartment = await Apartments.findById({ _id: id });
