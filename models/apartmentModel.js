@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
 
-const apartmentSchema = new mongoose.Schema({
+const apartmentSchema = new Schema({
   landownerId: {
     type: String,
     required: true,
@@ -9,7 +9,7 @@ const apartmentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  propertyName: {
+  propertyId: {
     type: String,
     required: true,
   },
@@ -37,6 +37,14 @@ const apartmentSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  drawingRooms: {
+    type: Number,
+    required: tru,
+  },
+  diningSpace: {
+    type: Number,
+    required: true,
+  },
   area: {
     type: Number,
     required: true,
@@ -51,10 +59,6 @@ const apartmentSchema = new mongoose.Schema({
   },
   kitchen: {
     type: Number,
-    required: true,
-  },
-  lift: {
-    type: Boolean,
     required: true,
   },
   furnishing: {
@@ -77,28 +81,12 @@ const apartmentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  securityGuard: {
-    type: Boolean,
-    required: true,
-  },
   gasType: {
-    type: String,
-    required: true,
-  },
-  district: {
-    type: String,
-    required: true,
-  },
-  postOffice: {
-    type: String,
-    required: true,
-  },
-  houseNumber: {
     type: String,
     required: true,
   },
 });
 
-const Apartments = mongoose.model("apartments", apartmentSchema);
+const Apartments = model("apartments", apartmentSchema);
 
-module.exports = Apartments;
+export default Apartments;

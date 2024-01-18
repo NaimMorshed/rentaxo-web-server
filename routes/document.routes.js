@@ -21,7 +21,10 @@ router.post('/', upload.single('nidImage'), (req, res) => {
   Tesseract.recognize(
     req.file.buffer,
     languages.join('+'),
-    // { logger: info => console.log(info) } // Optional logger for debugging
+    { 
+      logger: info => console.log(info),  // Optional logger for debugging
+      tessedit_ocr_engine_mode: 2, // Use LSTM OCR engine
+    }
   ).then(({ data: { text } }) => {
     // Process the extracted text and validate NID
     const dob = text.match(/\b\d{2} [A-Za-z]{3} \d{4}\b/);

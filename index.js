@@ -6,7 +6,7 @@ const cors = require("cors");
 
 const defaultRouter = require("./routes/default.routes");
 const userRouter = require("./routes/users.routes");
-const apartmentRouter = require("./routes/apartments.routes");
+const apartmentRouter = require("./routes/apartments.routes").default;
 const documentsRoutes = require("./routes/document.routes");
 const notFoundRouter = require("./routes/notFound.routes");
 

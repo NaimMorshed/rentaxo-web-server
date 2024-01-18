@@ -1,21 +1,17 @@
-const express = require("express");
-const router = express.Router();
-const {
-  getAllUser,
-  getUserByEmail,
-  getUserByPhone,
-  postNewUser,
-  deleteUser,
-  getUserById,
-  updateUser
-} = require("../controllers/users.controller");
+import { Router } from "express";
+const router = Router();
+import {
+  getApartments,
+  getApartmentsById,
+  postApartment,
+  deleteApartment,
+  updateApartment
+} from "../controllers/apartments.controller";
 
-router.get("/", getAllUser);
-router.get("/phone/:phone", getUserByPhone);
-router.get("/email/:email", getUserByEmail);
-router.get("/id/:id", getUserById);
-router.post("/", postNewUser);
-router.delete("/:phoneNumber", deleteUser);
-router.put("/:id", updateUser);
+router.get("/", getApartments);
+router.get("/:id", getApartmentsById);
+router.post("/", postApartment);
+router.delete("/:id", deleteApartment);
+router.put("/:id", updateApartment);
 
-module.exports = router;
+export default router;

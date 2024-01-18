@@ -1,6 +1,6 @@
-const Apartments = require("../models/apartmentModel");
+import Apartments from "../models/apartmentModel";
 
-exports.getApartments = async (req, res) => {
+export async function getApartments(req, res) {
   try {
     const apartments = await Apartments.find({});
     res.status(200).send(apartments);
@@ -9,47 +9,54 @@ exports.getApartments = async (req, res) => {
       message: error.message,
     });
   }
-};
+}
 
-exports.getApartmentById = async (req, res) => {
+export async function getApartmentById(req, res) {
   try {
     const { id } = req.params;
     const apartment = await Apartments.findById({ _id: id });
-    if (apartment) res.status(200).send(apartment);
-    else res.status(404).send({ message: "Apartment not found!" });
+    if (apartment) 
+      res.status(200).send(apartment);
+    else 
+      res.status(404).send({ message: "Apartment not found!" });
   } catch (error) {
     res.status(500).send({ message: error.message });
   }
   
 }
 
-exports.postApartment = async (req, res) => {
-  const { fullName, nickname, email, dob, gender, district, religion, phoneNumber, profilePhoto, accountType } = req.body;
-  const exist = await Users.findOne({ email });
+export async function postApartment(req, res) {
+  // const exist = await Apartments.findOne({ email });
 
-  if (exist) {
-    return res.status(400).send({
-      message: "Apartment already exist!",
-    });
-  }
-  else if (userExistPhone) {
-    return res.status(400).send({
-      message: "User phone already exist!",
-    });
-  }
+  // if (exist) {
+  //   return res.status(400).send({
+  //     message: "Apartment already exist!",
+  //   });
+  // }
 
   try {
-    await Users.create({
-      fullName: req.body.fullName,
-      nickname,
-      email,
-      dob,
-      gender,
-      district,
-      religion,
-      phoneNumber,
-      profilePhoto,
-      accountType,
+    await Apartments.create({
+      landownerId: req.body.landownerId,
+      tenantId: req.body.tenantId,
+      propertyId: req.body.propertyId,
+      unitNumber: req.body.unitNumber,
+      floor: req.body.floor,
+      address: req.body.address,
+      rent: req.body.rent,
+      bedRooms: req.body.bedRooms,
+      bathRooms: req.body.bathRooms,
+      drawingRooms: req.body.drawingRooms,
+      diningSpace: req.body.diningSpace,
+      area: req.body.area,
+      parking: req.body.parking,
+      wifi: req.body.wifi,
+      kitchen: req.body.kitchen,
+      furnishing: req.body.furnishing,
+      type: req.body.type,
+      balcony: req.body.balcony,
+      facing: req.body.facing,
+      status: req.body.status,
+      gasType: req.body.gasType,
     });
     res.status(201).send({
       message: "Apartment created successfully!",
@@ -59,9 +66,9 @@ exports.postApartment = async (req, res) => {
       message: error.message,
     });
   }
-};
+}
 
-exports.deleteApartment = async (req, res) => {
+export async function deleteApartment(req, res) {
   try {
     const apartment = await Apartments.findOne({ _id: req.params.id });
     if (apartment) {
@@ -77,28 +84,38 @@ exports.deleteApartment = async (req, res) => {
       message: error.message,
     });
   }
-};
+}
 
-exports.updateApartment = async (req, res) => {
+export async function updateApartment(req, res) {
   try {
     const { id } = req.params;
-    const user = await Apartments.findById({ _id: id });
-    if (user) {
+    const apartment = await Apartments.findById({ _id: id });
+    if (apartment) {
       await Apartments.updateOne(
         { _id: req.body._id },
         {
           $set: {
-            fullName: req.body.fullName,
-            nickname: req.body.nickname,
-            email: req.body.email,
-            dob: req.body.dob,
-            gender: req.body.gender,
-            district: req.body.district,
-            religion: req.body.religion,
-            phoneNumber: req.body.phoneNumber,
-            profilePhoto: req.body.profilePhoto,
-            accountType: req.body.accountType,
-            registrationDate: req.body.registrationDate,
+            landownerId: req.body.landownerId,
+            tenantId: req.body.tenantId,
+            propertyId: req.body.propertyId,
+            unitNumber: req.body.unitNumber,
+            floor: req.body.floor,
+            address: req.body.address,
+            rent: req.body.rent,
+            bedRooms: req.body.bedRooms,
+            bathRooms: req.body.bathRooms,
+            drawingRooms: req.body.drawingRooms,
+            diningSpace: req.body.diningSpace,
+            area: req.body.area,
+            parking: req.body.parking,
+            wifi: req.body.wifi,
+            kitchen: req.body.kitchen,
+            furnishing: req.body.furnishing,
+            type: req.body.type,
+            balcony: req.body.balcony,
+            facing: req.body.facing,
+            status: req.body.status,
+            gasType: req.body.gasType,
           },
         }
       );
@@ -113,4 +130,4 @@ exports.updateApartment = async (req, res) => {
       message: error.message,
     });
   }
-};
+}
