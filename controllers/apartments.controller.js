@@ -41,7 +41,6 @@ exports.postApartment = async (req, res) => {
       propertyId: req.body.propertyId,
       unitNumber: req.body.unitNumber,
       floor: req.body.floor,
-      address: req.body.address,
       rent: req.body.rent,
       bedRooms: req.body.bedRooms,
       bathRooms: req.body.bathRooms,
@@ -57,6 +56,7 @@ exports.postApartment = async (req, res) => {
       facing: req.body.facing,
       status: req.body.status,
       gasType: req.body.gasType,
+      images: req.body.images,
     });
     res.status(201).send({
       message: "Apartment created successfully!",

@@ -13,16 +13,16 @@ const apartmentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  description: {
+    type: String,
+    required: false,
+  },
   unitNumber: {
     type: Number,
     required: true,
   },
   floor: {
     type: Number,
-    required: true,
-  },
-  address: {
-    type: String,
     required: true,
   },
   rent: {
@@ -84,6 +84,10 @@ const apartmentSchema = new mongoose.Schema({
   gasType: {
     type: String,
     required: true,
+  },
+  images: {
+    type: [String], 
+    default: [],   
   },
 });
 
