@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
+  referenceId: {
+    type: String,
+    required: true,
+  },
   fullName: {
     type: String,
     required: true,
@@ -54,6 +58,18 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  occupation: {
+    type: String,
+    required: true,
+  },
+  permanentAddress: {
+    type: String,
+    required: true,
+  },
+  facebookId: {
+    type: String,
+    required: false,
+  }
 });
 
 const Users = mongoose.model("users", userSchema);

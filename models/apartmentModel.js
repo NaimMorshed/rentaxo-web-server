@@ -62,7 +62,7 @@ const apartmentSchema = new mongoose.Schema({
     required: true,
   },
   furnishing: {
-    type: String,
+    type: Boolean,
     required: true,
   },
   type: {
