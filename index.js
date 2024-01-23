@@ -9,6 +9,7 @@ const userRouter = require("./routes/users.routes");
 const apartmentRouter = require("./routes/apartments.routes");
 const propertyRouter = require("./routes/property.routes");
 const documentsRoutes = require("./routes/document.routes");
+const paymentRoutes = require("./routes/payment.routes");
 const notFoundRouter = require("./routes/notFound.routes");
 
 app.use(express.urlencoded({ extended: true }));
@@ -20,6 +21,7 @@ app.use("/users", userRouter);
 app.use("/apartments", apartmentRouter);
 app.use("/property", propertyRouter);
 app.use("/documents", documentsRoutes);
+app.use("/payment", paymentRoutes);
 app.use(notFoundRouter);
 
 connectDB().then(() => {
