@@ -42,7 +42,6 @@ exports.postProperty = async(req, res) => {
       areaName: req.body.areaName,
       roadName: req.body.roadName,
       postOffice: req.body.postOffice,
-      wardNumber: req.body.wardNumber,
       district: req.body.district,
       garage: req.body.garage,
       guestParking: req.body.guestParking,

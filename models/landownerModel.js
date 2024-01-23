@@ -28,6 +28,10 @@ const landownerSchema = new mongoose.Schema({
   autoApartmentPlaceOnEmpty: {
     type: Boolean,
     default: false,
+  },
+  propertyInfo: {
+    type: Boolean,
+    default: false,
   }
 });
 

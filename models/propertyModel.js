@@ -25,10 +25,6 @@ const propertySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  wardNumber: {
-    type: String,
-    required: true,
-  },
   district: {
     type: String,
     required: true,

@@ -17,6 +17,10 @@ const tenantSchema = new mongoose.Schema({
     type: String,
     default: "please update!",
   },
+  rentalHistory: {
+    type: [String],
+    default: [],
+  },
 });
 
 const Tenant = mongoose.model("tenant", tenantSchema);

@@ -7,7 +7,7 @@ const apartmentSchema = new mongoose.Schema({
   },
   tenantId: {
     type: String,
-    required: true,
+    default: "---",
   },
   propertyId: {
     type: String,
@@ -86,8 +86,8 @@ const apartmentSchema = new mongoose.Schema({
     required: true,
   },
   images: {
-    type: [String], 
-    default: [],   
+    type: String, 
+    required: false,   
   },
 });
 
