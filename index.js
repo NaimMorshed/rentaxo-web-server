@@ -11,6 +11,7 @@ const propertyRouter = require("./routes/property.routes");
 const documentsRoutes = require("./routes/document.routes");
 const paymentRoutes = require("./routes/payment.routes");
 const notFoundRouter = require("./routes/notFound.routes");
+const flatRequestRoutes = require("./routes/flatRequest.routes");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
@@ -22,6 +23,7 @@ app.use("/apartments", apartmentRouter);
 app.use("/property", propertyRouter);
 app.use("/documents", documentsRoutes);
 app.use("/payment", paymentRoutes);
+app.use("/flatRequest", flatRequestRoutes);
 app.use(notFoundRouter);
 
 connectDB().then(() => {

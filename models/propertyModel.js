@@ -5,7 +5,7 @@ const propertySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  name: {
+  propertyName: {
     type: String,
     required: true,
   },
@@ -21,9 +21,13 @@ const propertySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  postOffice: {
+  postCode: {
     type: String,
     required: true,
+  },
+  wardNumber: {
+    type: String,
+    required: false,
   },
   district: {
     type: String,

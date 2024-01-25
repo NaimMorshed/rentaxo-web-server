@@ -1,4 +1,5 @@
 const Apartments = require("../models/apartmentModel");
+const Property = require("../models/propertyModel");
 
 exports.getApartments = async (req, res) => {
   try {
@@ -26,45 +27,47 @@ exports.getApartmentById = async (req, res) => {
 }
 
 exports.postApartment = async (req, res) => {
-  // const exist = await Apartments.findOne({ email });
-
-  // if (exist) {
-  //   return res.status(400).send({
-  //     message: "Apartment already exist!",
-  //   });
-  // }
-
   try {
-    await Apartments.create({
-      landownerId: req.body.landownerId,
-      tenantId: req.body.tenantId,
-      propertyId: req.body.propertyId,
-      unitNumber: req.body.unitNumber,
-      floor: req.body.floor,
-      rent: req.body.rent,
-      bedRooms: req.body.bedRooms,
-      bathRooms: req.body.bathRooms,
-      drawingRooms: req.body.drawingRooms,
-      diningSpace: req.body.diningSpace,
-      area: req.body.area,
-      parking: req.body.parking,
-      wifi: req.body.wifi,
-      kitchen: req.body.kitchen,
-      furnishing: req.body.furnishing,
-      type: req.body.type,
-      balcony: req.body.balcony,
-      facing: req.body.facing,
-      status: req.body.status,
-      gasType: req.body.gasType,
-      images: req.body.images,
-    });
-    res.status(201).send({
-      message: "Apartment created successfully!",
-    });
+    let title, address;
+    const { propertyId } = req.body;
+    const demo = await Property.findOne({ _id: propertyId });
+    if (demo) {
+      title = demo.propertyName;
+      address = demo.houseNumber + ", " + demo.areaName + ", " + demo.district;
+
+      await Apartments.create({
+        landownerId: req.body.landownerId,
+        tenantId: req.body.tenantId,
+        propertyId: req.body.propertyId,
+        title: title,
+        address: address,
+        description: req.body.description,
+        unitNumber: req.body.unitNumber,
+        floor: req.body.floor,
+        rent: req.body.rent,
+        bedRooms: req.body.bedRooms,
+        bathRooms: req.body.bathRooms,
+        drawingRooms: req.body.drawingRooms,
+        diningSpace: req.body.diningSpace,
+        area: req.body.area,
+        parking: req.body.parking,
+        wifi: req.body.wifi,
+        kitchen: req.body.kitchen,
+        furnished: req.body.furnished,
+        type: req.body.type,
+        balcony: req.body.balcony,
+        facing: req.body.facing,
+        status: req.body.status,
+        gasType: req.body.gasType,
+        images: req.body.images,
+      });
+      return res.status(200).send({ message: "Apartment created successfully!" });
+    } else {
+      return res.status(401).send({ message: "Failed to get property!" });
+    }
+    
   } catch (error) {
-    res.status(500).send({
-      message: error.message,
-    });
+    return res.status(500).send({ message: error.message });
   }
 }
 
@@ -73,11 +76,11 @@ exports.deleteApartment = async (req, res) => {
     const apartment = await Apartments.findOne({ _id: req.params.id });
     if (apartment) {
       await Apartments.deleteOne({ _id: req.params.id });
-      res.status(200).send({
+      return res.status(200).send({
         message: "Apartment deleted successfully!",
       });
     } else {
-      res.status(404).send({ message: "Apartment not found!" });
+      return res.status(404).send({ message: "Apartment not found!" });
     }
   } catch (error) {
     res.status(500).send({

@@ -5,7 +5,7 @@ const {
   getApartmentById,
   postApartment,
   deleteApartment,
-  updateApartment
+  updateApartment,
 } = require("../controllers/apartments.controller");
 
 router.get("/", getApartments);

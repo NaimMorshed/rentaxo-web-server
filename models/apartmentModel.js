@@ -9,9 +9,37 @@ const apartmentSchema = new mongoose.Schema({
     type: String,
     default: "---",
   },
+  title: {
+    type: String,
+    required: true,
+  },
+  address: {
+    type: String,
+    required: true,
+  },
   propertyId: {
     type: String,
     required: true,
+  },
+  rented: {
+    type: Boolean,
+    default: false,
+  },
+  tenantName: {
+    type: String,
+    default: "---",
+  },
+  tenantPhone: {
+    type: String,
+    default: "---"
+  },
+  tenantPhoto: {
+    type: String,
+    default: "---",
+  },
+  joiningDate: {
+    type: String,
+    default: "---",
   },
   description: {
     type: String,
@@ -61,7 +89,7 @@ const apartmentSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  furnishing: {
+  furnished: {
     type: Boolean,
     required: true,
   },
