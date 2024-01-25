@@ -23,7 +23,7 @@ exports.getRequestById = async (req, res) => {
 };
 
 exports.postRequest = async (req, res) => {
-  const { apartmentId, landownerId, tenantId, status, date, category, member } = req.body;
+  const { apartmentId, landownerId, tenantId, tenantName, tenantPhoto, unitNumber, status, date, category, member } = req.body;
 
   // Check if request exist
   const exist = await Request.findOne({ landownerId: landownerId, tenantId: tenantId });
@@ -39,13 +39,16 @@ exports.postRequest = async (req, res) => {
       apartmentId, 
       landownerId, 
       tenantId, 
+      tenantName,
+      tenantPhoto,
+      unitNumber,
       status, 
       date, 
       category, 
       member
     });
 
-    return res.status(201).send({ message: "Request created successfully!" });
+    return res.status(200).send({ message: "Request created successfully!" });
 
   } catch (error) {
     return res.status(500).send({ message: error.message });

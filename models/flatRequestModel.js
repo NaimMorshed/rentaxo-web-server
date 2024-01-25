@@ -13,6 +13,18 @@ const requestSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  unitNumber: {
+    type: String,
+    required: true,
+  },
+  tenantName: {
+    type: String,
+    required: true,
+  },
+  tenantPhoto: {
+    type: String,
+    required: true,
+  },
   status: {
     type: Boolean,
     default: false,
