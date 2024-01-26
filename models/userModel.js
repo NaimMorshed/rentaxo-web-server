@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  referenceId: {
+  referenceId: {        // tenant / landowner foreign key
     type: String,
     required: true,
   },
