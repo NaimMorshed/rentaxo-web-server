@@ -19,8 +19,20 @@ const tenantSchema = new mongoose.Schema({
   },
   rentalHistory: {
     type: [String],
-    default: [],
+    default: [],      // apartment id's
   },
+  landownerId: {
+    type: String,
+    default: null,    // present landowner
+  },
+  apartmentId: {
+    type: String,
+    default: null,    // present apartment
+  },
+  securityDeposit: {
+    type: Number,
+    default: 0,
+  }
 });
 
 const Tenant = mongoose.model("tenant", tenantSchema);

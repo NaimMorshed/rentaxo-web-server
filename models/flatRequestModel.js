@@ -26,8 +26,8 @@ const requestSchema = new mongoose.Schema({
     required: true,
   },
   status: {
-    type: Boolean,
-    default: false,
+    type: String,
+    default: "Pending",
   },
   date: {
     type: Date,

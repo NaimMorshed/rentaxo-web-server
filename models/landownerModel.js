@@ -32,6 +32,10 @@ const landownerSchema = new mongoose.Schema({
   propertyInfo: {
     type: Boolean,
     default: false,
+  },
+  myTenants: {
+    type: [String],
+    default: [],
   }
 });
 
