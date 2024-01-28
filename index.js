@@ -12,6 +12,7 @@ const documentsRoutes = require("./routes/document.routes");
 const paymentRoutes = require("./routes/payment.routes");
 const notFoundRouter = require("./routes/notFound.routes");
 const flatRequestRoutes = require("./routes/flatRequest.routes");
+const chainingRoutes = require("./routes/chaining.routes");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
@@ -24,6 +25,7 @@ app.use("/property", propertyRouter);
 app.use("/documents", documentsRoutes);
 app.use("/payment", paymentRoutes);
 app.use("/flatRequest", flatRequestRoutes);
+app.use("/chaining", chainingRoutes);
 app.use(notFoundRouter);
 
 connectDB().then(() => {

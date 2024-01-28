@@ -32,7 +32,11 @@ const tenantSchema = new mongoose.Schema({
   securityDeposit: {
     type: Number,
     default: 0,
-  }
+  },
+  member: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const Tenant = mongoose.model("tenant", tenantSchema);
