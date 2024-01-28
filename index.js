@@ -29,7 +29,7 @@ app.use("/chaining", chainingRoutes);
 app.use(notFoundRouter);
 
 connectDB().then(() => {
-  app.listen("https://rentaxo-web-server.vercel.app/", () => {
+  app.listen(serverPort, () => {
     console.log(`Server running at http://localhost:${serverPort}`);
   });
 });
