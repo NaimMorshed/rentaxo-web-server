@@ -30,6 +30,6 @@ app.use(notFoundRouter);
 
 connectDB().then(() => {
   app.listen(serverPort, () => {
-    console.log(`Server running at http://localhost:${serverPort}`);
+    console.log(`Server running at https://rentaxo-web.vercel.app/:${serverPort}`);
   });
 });
