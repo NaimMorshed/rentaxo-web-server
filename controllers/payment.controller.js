@@ -10,10 +10,10 @@ exports.makePayment = async (req, res) => {
       total_amount: req.body.amount,
       currency: 'BDT',
       tran_id: 'REF123', // use unique tran_id for each api call
-      success_url: `http://localhost:5000/payment/success`,
-      fail_url: 'http://localhost:5000/payment/fail',
-      cancel_url: 'http://localhost:5000/payment/cancel',
-      ipn_url: 'http://localhost:5000/payment/ipn',
+      success_url: `https://rentaxo-web.vercel.app/payment/success`,
+      fail_url: 'https://rentaxo-web.vercel.app/payment/fail',
+      cancel_url: 'https://rentaxo-web.vercel.app/payment/cancel',
+      ipn_url: 'https://rentaxo-web.vercel.app/payment/ipn',
       shipping_method: 'Courier',
       product_name: 'Computer.',
       product_category: 'Electronic',
@@ -47,13 +47,13 @@ exports.makePayment = async (req, res) => {
 };
 
 exports.success = async (req, res) => {
-  return res.redirect(`http://localhost:3000/payment/${"success"}`);
+  return res.redirect(`https://rentaxo-web.vercel.app/payment/${"success"}`);
 };
 
 exports.fail = async (req, res) => {
-  return res.redirect(`http://localhost:3000/payment/${"fail"}`);
+  return res.redirect(`https://rentaxo-web.vercel.app/payment/${"fail"}`);
 };
 
 exports.cancel = async (req, res) => {
-  return res.redirect(`http://localhost:3000/payment/${"cancel"}`);
+  return res.redirect(`https://rentaxo-web.vercel.app/payment/${"cancel"}`);
 }
