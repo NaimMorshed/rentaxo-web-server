@@ -23,18 +23,16 @@ exports.getRequestById = async (req, res) => {
 };
 
 exports.postRequest = async (req, res) => {
-  const { apartmentId, landownerId, tenantId, tenantName, tenantPhoto, unitNumber, status, date, category, member } = req.body;
-
-  // Check if request exist
-  const exist = await Request.findOne({ landownerId: landownerId, tenantId: tenantId });
-  if (exist) {
-    return res.status(400).send({
-      message: "Request already exist!",
-    });
-  }
-
-  // Create Request
   try {
+    const { apartmentId, landownerId, tenantId, tenantName, tenantPhoto, unitNumber, status, date, category, member } = req.body;
+    console.log(req.body);
+    // Check if request exist
+    const exist = await Request.findOne({ landownerId: landownerId, tenantId: tenantId, unitNumber: unitNumber });
+    if (exist) {
+      return res.status(400).send("Request already exist!");
+    };
+
+    // Create Request
     await Request.create({
       apartmentId, 
       landownerId, 
@@ -48,10 +46,10 @@ exports.postRequest = async (req, res) => {
       member
     });
 
-    return res.status(200).send({ message: "Request created successfully!" });
+    return res.status(200).send("Request created successfully.");
 
   } catch (error) {
-    return res.status(500).send({ message: error.message });
+    return res.status(500).send(error.message);
   }
 };
 
